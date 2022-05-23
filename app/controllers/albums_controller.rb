@@ -19,16 +19,7 @@ class AlbumsController < ApplicationController
       render :new
     end
   end
-
-  # Other controller methods go here.
-
-  private
-    def album_params
-      params.require(:album).permit(:name, :genre)
-    end
-
-  end
-
+  
   def edit
     @album = Album.find(params[:id])
     render :edit
@@ -54,4 +45,11 @@ class AlbumsController < ApplicationController
     @album.destroy
     flash[:notice] = "Album successfully deleted!"
     redirect_to albums_path
+  end
+
+  private
+    def album_params
+      params.require(:album).permit(:name, :genre)
+    end
+
   end
